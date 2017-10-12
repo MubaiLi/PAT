@@ -1,5 +1,8 @@
 package Basic;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class test1014 {
 
@@ -19,24 +22,23 @@ public class test1014 {
 		String[] week = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
 		char[] ch1 = s1.toCharArray();
 		char[] ch2 = s2.toCharArray();
-		boolean isDay = false; boolean isHour = false;
+		int index  = 0;
 		for (int i = 0; i < s1.length() && i < s2.length(); i ++) {
-			if(ch1[i] == ch2[i]) {
-				if (((ch1[i] >= 'A' && ch1[i] <= 'N') || (ch1[i] >= '0' && ch1[i] <= '9')) && !isHour && isDay) {
-					isHour = true;
-					if (ch1[i] >= '0' && ch1[i] <= '9') {
-						System.out.print("0" + ch1[i]);
-					} else {
-						System.out.print(ch1[i] - 'A' + 10);
-					}
-				}
-			}
-			if (ch1[i] >= 'A' && ch1[i] <= 'G' && !isDay) {
-				isDay = true;
-				System.out.print(week[ch1[i] - 'A'] + " ");
+			if (ch1[i] >= 'A' && ch1[i] <= 'G' && ch1[i] == ch2[i]) {
+			    index = i + 1;
+				System.out.print(week[ch1[i] - 'A'] + " "); break;
 			}
 		}
-
+		for (int i = index; i < s1.length() && i < s2.length(); i ++) {
+			if (((ch1[i] >= 'A' && ch1[i] <= 'N') || (ch1[i] >= '0' && ch1[i] <= '9')) && ch1[i] == ch2[i]) {
+				if (ch1[i] >= '0' && ch1[i] <= '9') {
+					System.out.print("0" + ch1[i]);
+				} else {
+					System.out.print(ch1[i] - 'A' + 10);
+				}
+				break;
+			}
+		}
 	}
 	
 	public static void printMin(String s1, String s2) {
@@ -44,7 +46,7 @@ public class test1014 {
 		char[] ch2 = s2.toCharArray();
 		for (int i = 0; i < s1.length() && i < s2.length(); i ++) {
 			if ((ch1[i] == ch2[i]) && ((ch1[i] >= 'A' && ch1[i] <= 'Z') || (ch1[i] >= 'a' && ch1[i] <= 'z'))) {
-				System.out.printf(":%02d", i);
+				System.out.printf(":%02d", i); break;
 			}
 		}
 	}

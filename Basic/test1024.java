@@ -69,6 +69,4 @@ public class test1024 {
 			}
 		}
 	}
-	
-
 }
